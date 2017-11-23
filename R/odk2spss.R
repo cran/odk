@@ -23,7 +23,15 @@ if(is.null(pc.data)){
 sps.dat<-function(sdf,cdf,ddf){
   ##############
   ddf_s<-NULL;
-  ddf_s<-ddf[-1]
+################
+dx1<-names(ddf)[1]
+dx2<-nchar(dx1)-3
+dx3<-nchar(dx1)
+meta<-substr(dx1,dx2,dx3)
+
+if(meta=="ceID"){ddf_s<-ddf[-1]}else{ddf_s<-ddf[-ncol(ddf)]}
+ 
+##############
   a<-cdf_s(cdf)
   
   m<-cbind(as.character(a$v.var),as.character(a$value),as.character(a$v.lebel))
@@ -65,10 +73,27 @@ sps.dat<-function(sdf,cdf,ddf){
     
     if(m2[i,3]!="select_multiple")
       d1<-cbind(d1,ddf_m[,i])
-    else
-      d1<-cbind(d1,mrm(ddf_m[,i],m2[i,2]))
+    else{
+############# prob#5=2005#####
+
+m20<-mrm(ddf_m[,i],m2[i,2])
+row.names(m20)<-paste(1:nrow(m20))
+
+for(i in 1:nrow(m20)){
+for(j in 1:ncol(m20)){
+
+if(is.na(m20[i,j])){ttt=NA}else{
+m21<-nchar(m20[i,j])
+m21<-as.numeric(m21)
+if(m21>=3){m20[i,j]<-substr(m20[i,j],m21-1,m21)}
+		}
+}}
+
+      d1<-cbind(d1,m20)
+#######
+	  }
   }
-  d1<-d1[,-1]
+d1<-d1[,-1];
   ############### Print data part
   return(
     ########################################

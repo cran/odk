@@ -8,12 +8,15 @@ Convert 'ODK' or 'XLSForm' to 'SPSS' Data Frame
 After develop a \href{https://build.opendatakit.org/}{'ODK' frame}, we can \href{https://www.google.com/earth/outreach/learn/odk-collect-and-google-drive-integration-to-store-and-manage-your-data/}{link the frame to 'Google Sheets'} and collect data through \href{https://www.android.com/}{'Android'}. This data uploaded to a \href{https://www.google.com/sheets/about/}{'Google sheets'}. \code{odk2spss()} function help to convert the 'ODK' frame into \href{https://www.ibm.com/analytics/us/en/technology/spss/}{'SPSS'} frame. Also able to add downloaded 'Google sheets' data by using \code{pc.data} or read data from 'Google sheets' by using 'ODK' frame 'submission_url'. 
 }
 \usage{
-odk2spss(xlsx, pc.data = NULL, out.path = NULL)
+odk2spss(xlsx, pb.url=NULL, pc.data = NULL, out.path = NULL)
 }
 
 \arguments{
   \item{xlsx}{
 path of 'ODK' or \href{https://opendatakit.org/use/xlsform/}{XLSForm} questionniare frame in 'xlsx' format.
+}
+  \item{pb.url}{
+Published link of 'Google Sheets' for data, if \code{pb.url = NULL} , then the \code{odk2spss()} function try to get data from \code{pc.data}.
 }
   \item{pc.data}{
 path of data file in 'xlsx' format, if \code{pc.data = NULL} , then the \code{odk2spss()} function download data from 'Google Sheets', internet connection needed for this.
@@ -34,6 +37,9 @@ Muntashir-Al-Arefin \email{muntashir.a2i@gmail.com}
 }
 \note{
 \code{odk2spss()} worked nicely for taxt, single choice, multiple choice and numeric variable.  Also work on other type variables.
+Do not use ",",".","-" and "_" separator in variable name.
+Do not use group variable in 'ODK' frame.
+Always keep a non-empty variable as your last variable in 'ODK' frame. 
 }
 
 

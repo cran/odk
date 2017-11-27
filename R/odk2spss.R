@@ -1,19 +1,24 @@
 odk2spss <-
-function(xlsx, pc.data=NULL, out.path=NULL){
+function(xlsx, pb.url=NULL, pc.data=NULL, out.path=NULL){
 ############################################
 ## odk.xlsx file to sdf, cdf and ddf creater function xl()
 xl<-function(xlsx, pc.data){
   requireNamespace(package="openxlsx")
-  requireNamespace(package="gsheet")
+  requireNamespace(package="utils")
   sdf<-openxlsx::read.xlsx(xlsx, sheet = 1, cols = c(1:3), skipEmptyRows = TRUE)
   cdf<-openxlsx::read.xlsx(xlsx, sheet = 2, cols = c(1:3), skipEmptyRows = TRUE)
   url<-openxlsx::read.xlsx(xlsx, sheet = 3, cols = 4, rows = 1:2)
+
+if(is.null(pb.url)){
 
 if(is.null(pc.data)){
     url<-as.character(url)
     ddf<-gsheet::gsheet2tbl(url)
   }else{
     ddf<-openxlsx::read.xlsx(pc.data)}
+			}else{
+ddf<-utils::read.csv(url(pb.url), header = TRUE)
+}
   
   return(list(sdf,cdf,ddf, xlsx))
 }

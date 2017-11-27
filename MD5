@@ -1,8 +1,8 @@
-c46fb0cb7425227fbc0dbd5a7c8fc1f5 *DESCRIPTION
-de5ce269cf5e4ce7b0bf91d1ba42b91c *NAMESPACE
-82f61049d030121fe792915ee0952398 *R/odk2spss.R
+cbf06c5d800f419115fe42204337f08d *DESCRIPTION
+de6683dd2dc797c109d80b5edf2b9ab1 *NAMESPACE
+e5466e37d07e9f4681f397d08f95a9fc *R/odk2spss.R
 1cf1802bbbb6c2e2b34b99b5f245c292 *data/gs.data.rda
 01942496cf2db50c805e02e2ebeb114d *data/odk.frame.rda
 24f7c38b9498b8b2de140cfff3a0f049 *man/gs.data.Rd
 f4f119eb38997fa196345380b5fe2906 *man/odk.frame.Rd
-2fb966e3b5fbeb9291fa29f621e0d29e *man/odk2spss.Rd
+cc8b2d99d9d6592b1e80084f9862532e *man/odk2spss.Rd
